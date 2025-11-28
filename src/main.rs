@@ -1,3 +1,5 @@
+mod chunk;
+
 fn main() {
-    println!("Hello, world!");
+    chunk::Chunk{ count: 0, capacity: 0, code: vec![]};
 }
