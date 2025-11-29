@@ -1,5 +1,3 @@
-use crate::{memory::grow_capacity, GROW_CAPACITY};
-
 /*
 * each instruction has one byte operation code(opcode).
 * it defines what kind of operations we're dealing with.
