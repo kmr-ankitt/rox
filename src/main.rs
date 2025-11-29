@@ -1,5 +1,7 @@
 mod chunk;
 
 fn main() {
-    chunk::Chunk{code: vec![]};
+    let mut chunk = chunk::Chunk::new();
+    chunk.write_chunk(chunk::OpCode::OPRETURN);
+    println!("{:?}", chunk);
 }
