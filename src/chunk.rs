@@ -1,3 +1,5 @@
+use crate::{memory::grow_capacity, GROW_CAPACITY};
+
 /*
 * each instruction has one byte operation code(opcode).
 * it defines what kind of operations we're dealing with.
@@ -6,24 +8,32 @@ pub enum OpCode{
     OPRETURN,
 }
 
+// FIXME: i think we dont need to add count and capacity since rust uses 
+// vec which is dynamically allocated.
 /*
 * chunk structure that holds bytecode and other data
-*  - capacity: total allocated size for code array
-*  - count: current number of bytes used in code array
 *  - code: dynamic array of bytes representing bytecode
 */
 pub struct Chunk{
-    pub count: usize,
-    pub capacity: usize,
     pub code: Vec<u8>
 }
 
 impl Chunk{
+
+    /*
+     * initializes a dynamically allocated chunk structure
+     */
     pub fn new() -> Self{
         Chunk { 
-            count: 0, 
-            capacity: 0, 
             code: Vec::new(),
         }
+    }
+
+    /*
+    * writes a byte to chunk's array
+    *  simply adds byte to the array
+    */
+    pub fn write_chunk(&mut self, byte: u8) {
+        self.code.push(byte);
     }
 }
