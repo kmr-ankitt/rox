@@ -1,7 +1,8 @@
 mod chunk;
+mod debug;
 
 fn main() {
     let mut chunk = chunk::Chunk::new();
     chunk.write_chunk(chunk::OpCode::OPRETURN);
-    println!("{:?}", chunk);
+    debug::disassemble_chunk(&chunk, "test chunk");
 }
